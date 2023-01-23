@@ -1,0 +1,26 @@
+{
+   "classroom_id": {
+      "type": "INT",
+      "key": "PRIMARY KEY",
+      "AUTO_INCREMENT": true,
+      "NOT NULL": true
+   },
+   "grade": {
+      "type": "VARCHAR(255)",
+      "key": "",
+      "AUTO_INCREMENT": false,
+      "NOT NULL": true
+   },
+   "grade_index": {
+      "type": "INT",
+      "key": "",
+      "AUTO_INCREMENT": false,
+      "NOT NULL": true
+   },
+   "teacher_id": {
+      "type": "INT",
+      "key": "",
+      "AUTO_INCREMENT": false,
+      "NOT NULL": true
+   }
+}

@@ -1,0 +1,26 @@
+{
+    "admin_id": {
+        "type": "INT",
+        "key": "PRIMARY KEY",
+        "AUTO_INCREMENT": true,
+        "NOT NULL": true
+    },
+    "admin_name": {
+        "type": "VARCHAR(255)",
+        "key": "",
+        "AUTO_INCREMENT": false,
+        "NOT NULL": true
+    },
+    "admin_password": {
+        "type": "VARCHAR(255)",
+        "key": "",
+        "AUTO_INCREMENT": false,
+        "NOT NULL": true
+    },
+    "school_id": {
+        "type": "INT",
+        "key": "",
+        "AUTO_INCREMENT": false,
+        "NOT NULL": true
+    }
+}

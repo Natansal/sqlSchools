@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Add classroom</h1>
+        <form action="http://localhost:8000/classrooms" method="post">
+            <input id="grade" type="text" placeholder="Grade"
+                name="grade" required>
+            <input id="grade_index" type="number" placeholder="Index"
+                name="grade_index"
+                required>
+            <input id="teacher_id" type="number" placeholder="Teacher ID"
+                name="teacher_id"
+                required>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

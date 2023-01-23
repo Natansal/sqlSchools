@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Add teacher</h1>
+        <form action="http://localhost:8000/teachers" method="post">
+            <input id="teacher_name" type="text" placeholder="Name"
+                name="teacher_name" required>
+            <input id="teacher_password" type="password" placeholder="password"
+                name="teacher_password"
+                required>
+            <input id="email" type="email" placeholder="email" name="email"
+                required>
+            <input type="number" placeholder="School id" name="school_id"
+                required>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

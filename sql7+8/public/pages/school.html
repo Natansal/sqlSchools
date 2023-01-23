@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Add School</h1>
+        <form action="http://localhost:8000/schools" method="post">
+            <input type="text" placeholder="Admin name" name="admin_name">
+            <input type="password" placeholder="Admin password"
+                name="admin_password">
+            <input id="school_name" type="text" placeholder="Name"
+                name="school_name" required>
+            <input type="number" placeholder="School Code" name="school_code"
+                required>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
