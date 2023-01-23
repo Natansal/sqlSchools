@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Linux (x86_64)
 --
--- Host: localhost    Database: School
+-- Host: localhost    Database: Schools
 -- ------------------------------------------------------
 -- Server version	8.0.31-0ubuntu0.22.04.1
 
@@ -16,30 +16,80 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `course`
+-- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `course`;
+DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `course` (
-  `course_id` int NOT NULL AUTO_INCREMENT,
-  `course_subject` varchar(45) NOT NULL,
-  `teacher_id` int NOT NULL,
-  PRIMARY KEY (`course_id`),
-  UNIQUE KEY `course_id_UNIQUE` (`course_id`),
-  UNIQUE KEY `course_subject_UNIQUE` (`course_subject`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `admin` (
+  `admin_id` int NOT NULL AUTO_INCREMENT,
+  `admin_name` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `school_id` int NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `course`
+-- Dumping data for table `admin`
 --
 
-LOCK TABLES `course` WRITE;
-/*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Course 1',1),(2,'Course 2',1),(3,'Course 3',2),(4,'Course 4',2),(5,'Course 5',3);
-/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'John','Highway71',1),(2,'Peter','Lowstreet4',2);
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `classroom`
+--
+
+DROP TABLE IF EXISTS `classroom`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `classroom` (
+  `classroom_id` int NOT NULL AUTO_INCREMENT,
+  `grade` varchar(255) NOT NULL,
+  `grade_index` int NOT NULL,
+  `teacher_id` int NOT NULL,
+  PRIMARY KEY (`classroom_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classroom`
+--
+
+LOCK TABLES `classroom` WRITE;
+/*!40000 ALTER TABLE `classroom` DISABLE KEYS */;
+INSERT INTO `classroom` VALUES (1,'a',3,3),(2,'b',2,3),(3,'a',3,5);
+/*!40000 ALTER TABLE `classroom` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `school`
+--
+
+DROP TABLE IF EXISTS `school`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `school` (
+  `school_id` int NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(255) NOT NULL,
+  `school_code` int NOT NULL,
+  PRIMARY KEY (`school_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `school`
+--
+
+LOCK TABLES `school` WRITE;
+/*!40000 ALTER TABLE `school` DISABLE KEYS */;
+INSERT INTO `school` VALUES (1,'High School',3482),(2,'Low School',3245);
+/*!40000 ALTER TABLE `school` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -51,10 +101,11 @@ DROP TABLE IF EXISTS `student`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
   `student_id` int NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`student_id`),
-  UNIQUE KEY `student_id_UNIQUE` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `student_name` varchar(255) NOT NULL,
+  `student_password` varchar(255) NOT NULL,
+  `classroom_id` int NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,31 +114,8 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'Student 1'),(2,'Student 2'),(3,'Student 3'),(4,'Student 4'),(5,'Student 5'),(6,'Student 6'),(7,'Student 7'),(8,'Student 8'),(9,'Student 9'),(10,'Student 10');
+INSERT INTO `student` VALUES (1,'a','a',1),(2,'Natan','Salmon',2),(3,'Natansdfsd','sdsdfsdf',2),(4,'nate','heck',3);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `student_course`
---
-
-DROP TABLE IF EXISTS `student_course`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `student_course` (
-  `student_id` int NOT NULL,
-  `course_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `student_course`
---
-
-LOCK TABLES `student_course` WRITE;
-/*!40000 ALTER TABLE `student_course` DISABLE KEYS */;
-INSERT INTO `student_course` VALUES (1,1),(1,2),(2,3),(2,4),(3,1),(4,2),(5,3),(6,4),(7,5),(8,1),(9,2),(10,3);
-/*!40000 ALTER TABLE `student_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -99,10 +127,12 @@ DROP TABLE IF EXISTS `teacher`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `teacher` (
   `teacher_id` int NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`teacher_id`),
-  UNIQUE KEY `teacher_id_UNIQUE` (`teacher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `teacher_name` varchar(255) NOT NULL,
+  `teacher_password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `school_id` int NOT NULL,
+  PRIMARY KEY (`teacher_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +141,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'Teacher 1'),(2,'Teacher 2'),(3,'Teacher 3');
+INSERT INTO `teacher` VALUES (1,'asd','hjgjhgj','jhgjhgjh@ksdjk.com',1),(2,'asd','hjgjhgj','jhgjhgjh@ksdjk.com',1),(3,'asd','hjgjhgj','jhgjhgjh@ksdjk.com',1),(4,'sdjnf','sjhkdfk','jkasdhjkh@sdha.com',1),(5,'hilary','klinton','askldjsklfj@skldjf.com',2);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -124,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-23 14:26:29
+-- Dump completed on 2023-01-23 14:34:50
